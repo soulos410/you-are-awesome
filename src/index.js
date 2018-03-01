@@ -10,11 +10,17 @@ const createNotEnumerableProperty = (name) =>{
     return name;
 };
 const createProtoMagicObject = () => {
-    let obj = Object.create(null);
-    Object.defineProperty(obj,'__proto__',{writable: true, configurable: true});
-        return obj;
+    let obj = new String;
+
+    function typeOf(){
+        return Object.prototype.toString.call(this)
+    }
 };  
-const incrementor = () => {};
+
+let i = 0;
+const incrementor = _ => (i++,incrementor);
+incrementor.toString = _ => i;
+
 const asyncIncrementor = () => {};
 const createIncrementer = () => {};
 
