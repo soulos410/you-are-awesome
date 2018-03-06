@@ -10,19 +10,31 @@ const createNotEnumerableProperty = (name) =>{
     return name;
 };
 const createProtoMagicObject = () => {
-    let obj = new String;
-
-    function typeOf(){
-        return Object.prototype.toString.call(this)
-    }
+    let obj = function(){};
+    obj.__proto__ = obj.prototype;
+    return obj;
 };  
 
 let i = 0;
 const incrementor = _ => (i++,incrementor);
 incrementor.toString = _ => i;
 
-const asyncIncrementor = () => {};
-const createIncrementer = () => {};
+let increment = 0;
+const asyncIncrementor = () => {
+        increment++;
+        return increment;
+};
+
+const createIncrementer = () => {
+    let inc = {
+        value : 0,
+        next : function* (){
+            yield value++;
+            return this;
+        }
+        }
+    return inc;
+};
 
 // return same argument not earlier than in one second, and not later, than in two
 const returnBackInSecond = () => {};
