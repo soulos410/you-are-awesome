@@ -36,7 +36,16 @@ const createIncrementer = () => {
 };
 
 // return same argument not earlier than in one second, and not later, than in two
-const returnBackInSecond = () => {};
+const returnBackInSecond = (param) => {
+let promise = new Promise((resolve, reject) => {
+    setTimeout(() => resolve(param), 1000);
+  });
+  promise.then(
+      result => result,
+      error => 'something went wrong'
+    );
+    return promise;
+};
 const getDeepPropertiesCount = () => {};
 const createSerializedObject = () => {};
 const toBuffer = () => {};
