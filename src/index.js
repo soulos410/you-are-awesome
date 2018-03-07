@@ -26,14 +26,13 @@ const asyncIncrementor = () => {
 };
 
 const createIncrementer = () => {
-    let inc = {
-        value : 0,
-        next : function* (){
-            yield value++;
-            return this;
+    let inc = 1;
+    function* next(){
+        while(true){
+            yield inc++;
         }
         }
-    return inc;
+    return next();
 };
 
 // return same argument not earlier than in one second, and not later, than in two
