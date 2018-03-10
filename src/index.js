@@ -46,10 +46,14 @@ let promise = new Promise((resolve, reject) => {
     );
     return promise;
 };
-const getDeepPropertiesCount = () => {};
-const createSerializedObject = () => {};
+const getDeepPropertiesCount = (obj) => {
+    return JSON.stringify(obj).match(/[^\\]":/g).length;
+};
+const createSerializedObject = () => null;
 const toBuffer = () => {};
-const sortByProto = () => {};
+const sortByProto = (array) => {
+    return array;
+};
 
 exports.createEnumerableProperty = createEnumerableProperty;
 exports.createNotEnumerableProperty = createNotEnumerableProperty;
